@@ -3,6 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  publicPath: '/onejo/',
+  base: '/onejo/',
   plugins: [vue(), tailwindcss()],
 })
