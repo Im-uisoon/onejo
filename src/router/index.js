@@ -5,6 +5,7 @@ import Register from '../views/Register.vue'
 import Plan from '../views/Plan.vue'
 import Community from '@/views/Community.vue'
 import Note from '@/views/Note.vue'
+import Forget from '@/views/Forget.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -13,6 +14,7 @@ const routes = [
   { path: '/plan', name: 'Plan', component: Plan },
   { path: '/community', name: 'Community', component: Community },
   { path: '/note', name: 'Note', component: Note },
+  { path: '/forget', name: 'Forget', component: Forget },
 ]
 
 const router = createRouter({

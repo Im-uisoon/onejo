@@ -4,7 +4,9 @@
       <div class="flex justify-between items-center h-20">
         <!-- 로고 -->
         <div class="flex-shrink-0">
-          <RouterLink to="/" class="text-2xl font-bold">{{ userName }}님의 Note</RouterLink>
+          <RouterLink to="/" class="text-2xl font-bold">
+            {{ isLoggedIn ? `${userName}님의 Note` : 'Note' }}
+          </RouterLink>
         </div>
 
         <div class="flex items-center">
@@ -51,15 +53,16 @@
       </div>
 
       <!-- 모바일 메뉴 -->
-      <nav v-if="isMenuOpen" class="md:hidden bg-gray-50 px-4 py-2 z-50">
+      <nav v-if="isMenuOpen" class="md:hidden bg-white w-full px-4 py-2 z-50 absolute left-0 rounded-b-lg border-b-1 shadow-lg">
         <RouterLink to="/" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm" active-class="bg-gray-200" @click="handleRouterLinkClick"> Home </RouterLink>
-        <RouterLink to="/schedule" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm" active-class="bg-gray-200" @click="handleRouterLinkClick"> 일정 </RouterLink>
-        <RouterLink to="/notes" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm" active-class="bg-gray-200" @click="handleRouterLinkClick"> 필기 </RouterLink>
+        <RouterLink to="/plan" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm" active-class="bg-gray-200" @click="handleRouterLinkClick"> Plan </RouterLink>
+        <RouterLink to="/community" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm" active-class="bg-gray-200" @click="handleRouterLinkClick"> Community </RouterLink>
+        <RouterLink to="/note" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm" active-class="bg-gray-200" @click="handleRouterLinkClick"> Note </RouterLink>
 
         <!-- 모바일 로그인/회원가입 버튼 -->
         <div v-if="!isLoggedIn" class="mt-2 pt-2 border-t border-gray-200">
-          <RouterLink to="/login" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm text-blue-500" @click="handleRouterLinkClick"> 로그인 </RouterLink>
-          <RouterLink to="/register" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm text-blue-500" @click="handleRouterLinkClick"> 회원가입 </RouterLink>
+          <RouterLink to="/login" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm text-blue-500" @click="handleRouterLinkClick"> Login </RouterLink>
+          <RouterLink to="/register" class="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm text-blue-500" @click="handleRouterLinkClick"> Sign up </RouterLink>
         </div>
       </nav>
     </div>
@@ -78,7 +81,6 @@ const userName = ref('사용자')
 const router = useRouter()
 
 const toggleMenu = () => {
-  console.log('toggleMenu called, isMenuOpen:', isMenuOpen.value)
   isMenuOpen.value = !isMenuOpen.value
 }
 
